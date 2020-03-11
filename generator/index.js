@@ -56,10 +56,10 @@ module.exports = (api, options, rootOptions) => {
       "eslint": "^6.7.2",
       "eslint-plugin-prettier": "^3.1.1",
       "eslint-plugin-vue": "^6.1.2",
+      "less": "^3.0.4",
+      "less-loader": "^5.0.0",
       "lint-staged": "^9.5.0",
       "prettier": "^1.19.1",
-      "stylus": "^0.54.7",
-      "stylus-loader": "^3.0.2",
       "vue-template-compiler": "^2.6.11"
     }
   });
@@ -68,11 +68,10 @@ module.exports = (api, options, rootOptions) => {
     Object.keys(files)
       .filter(path => path.startsWith('src/') || path.startsWith('public/'))
       .forEach(path => delete files[path])
+    console.log(Object.keys(files))
   })
   api.render('../template');
   api.onCreateComplete(() => {
     process.env.VUE_CLI_SKIP_WRITE = true;
-    // utils.deleteDir('./src/components');
-    // utils.deleteDir('./src/assets');
   });
 };
